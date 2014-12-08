@@ -15,6 +15,7 @@ var dbToUse = 'jfoster';
 //use the database for any queries run
 var useDatabaseQry = 'USE ' + dbToUse;
 
+//IGNORE
 //create the User table if it does not exist
 connection.query(useDatabaseQry, function (err) {
     if (err) throw err;
@@ -57,6 +58,8 @@ exports.Insert = function(userInfo, callback) {
         }
     );
 }
+//IGNORE
+
 
 //Mine
 exports.seeAll = function(callback){
