@@ -184,8 +184,8 @@ exports.insertSteps = function(userInfo, callback) {
     }
 }
 
-exports.moreInfo = function(callback) {
-    connection.query('select * from Drink d join generalTypes gt on d.drinkName = gt.drinkName join specificTypes st on d.drinkName = st.drinkName join Steps s on d.drinkName = s.drinkName',
+exports.moreInfo1 = function(info,callback) {
+    connection.query('select * from Drink d join generalTypes gt on d.drinkName = gt.drinkName join specificTypes st on d.drinkName = st.drinkName and d.drinkName="' + info.drinkName + '";',
         function (err, result) {
             if(err) {
                 console.log(err);
@@ -197,5 +197,32 @@ exports.moreInfo = function(callback) {
     );
 }
 
+exports.moreInfo2 = function(info,callback) {
+    connection.query('select instruction from Steps where drinkName="' + info.drinkName +'";',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+		
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.moreInfo3 = function(info,callback) {
+    connection.query('select specName from specificTypes where drinkName="' + info.drinkName +'";',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+		
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
 
 

@@ -201,15 +201,52 @@ router.get('/about',function(req,res){
     res.render('about.ejs',{action: 'user/about'});
 });
 
+
+
 //More info
 router.get('/moreInfo',function(req,res){
-    console.log(req.query);
-    db.moreInfo(function(err,result){
+    //console.log(req.query);
+    //var drinkName2;
+    //var glassType2;
+    //var ice2;
+    //var mainType2;
+    db.moreInfo1(req.query,function(err,result){
 	if(err) throw err;
-	res.render('displayDI2.ejs', {rs:result});
+	//console.log(result[0].drinkName);
+	//drinkName2 : result[0].drinkName;
+	//console.log(drinkName2);
+	//glassType2 :result[0].glassType;
+	//ice2 : result[0].ice;
+	//mainType2 : result[0].alcName;
+	res.render('displayDI2.ejs', {rs: result});
     }
     );
-    //res.send('yup');
+    /*
+    var step = [""];
+    db.moreInfo2(req.query,function(err,result){
+	if(err) throw err;
+	for(var i = 0; i < result.length;i++)
+	    step[i] = result[i].instruction;
+    }
+    );
+    var ing = [""];
+    db.moreInfo3(req.query,function(err,result){
+	if(err)throw err;
+	for(var i = 0; i < result.length;i++)
+	    ing[i] = result[i].specName;
+    }
+    );
+    var data = {
+        drinkName: drinkName2,
+        glassType: glassType2,
+        ice: ice2,
+        mainType: mainType2,
+        step: step,
+        ingredient: ing
+    };
+    console.log(drinkName2);
+    res.render('displayDI2.ejs', data);
+    */
 });
 
 

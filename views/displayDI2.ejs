@@ -1,7 +1,7 @@
 <% include header %>
 <% include sideBar %>
 
-Drink
+
     <table id="drink">
         <tr><td>Drink Name: </td>
             <td><%= rs[0].drinkName %></td>
@@ -13,23 +13,9 @@ Drink
             <td><%= rs[0].ice %></td>
         </tr>	        
 	<tr><td>Main Alcohol: </td>
-            <td><%= rs[0].mainType %></td>
+            <td><%= rs[0].alcName %></td>
         </tr>
-	<tr><td>Ingredients: </td>
-	<% for (var i=0; i < 10; i++) { %>
-            <tr>
-             <td> <%= rs[i].specName %></td>
-            </tr>
-        <% } %>
-	</tr>	        
-	<tr><td>Steps: </td>
-        <% for (var i=0; i < 10; i++) { %>
-            <tr>
-             <td> <%= rs[i].instruction %></td>
-            </tr>
-        <% } %>
-        </tr>
-
+	
 
     </table>
 <% include footer %>
