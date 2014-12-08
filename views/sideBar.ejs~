@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<!-- sideBar -->
+            <body>
+            <style>
+            #nav{
+                color:blue;
+                background-color:grey;
+                height:300px;
+                width:110px;
+                float:left;
+                padding:5px;
+            }
+            #welcome{
+                width:350px;
+                height:300px;
+
+                float:left
+            }
+            </style>
+
+            <div id = "nav">
+                <a href = "/"> Home </a><br>
+                <a href = "/user/seeAll"> See All</a> <br>
+                <a href = "/user/searchKind" >Search by Kind</a> <br>
+                <a href = "/user/searchIng" >Search by Ingredient</a> <br>
+                <a href = "/user/about" > About</a> <br>
+		</div>
+	    </body>
+
+<!-- sideBar -->

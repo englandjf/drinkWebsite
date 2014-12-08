@@ -1,0 +1,14 @@
+<!DOCTYPE Html>
+<% include header %>
+<% include sideBar %>
+
+<form method="post" action="/searchKind">
+  <select id = "alcohol" name = "alcohol">
+    <option value="Vodka">Vodka</option>
+    <option value="Whiskey">Whiskey</option>
+    <option value="Gin">Gin</option>
+  </select>
+  <input type = "submit">
+</form>      
+
+<% include footer %>

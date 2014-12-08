@@ -1,0 +1,15 @@
+<% include header %>
+
+
+   <% if(rs.length > 0) { %>
+    <table>
+        <tr><th><%= rs[0].alcName %> Drinks</th></tr>
+        <% for (var i=0; rs.length > i; i++) { %>
+            <tr>
+             <td><a href="/user/?userid=<%= rs[i].drinkName %>"> <%= rs[i].drinkName %></a></td>
+            </tr>
+        <% } %>
+    </table>
+    
+
+<% include footer %>

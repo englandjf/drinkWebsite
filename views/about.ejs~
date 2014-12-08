@@ -1,0 +1,32 @@
+<!DOCTYPE Html>
+<% include header %>
+<!-- sideBar -->
+            <body>
+            <style>
+            #nav{
+                color:blue;
+                background-color:grey;
+                height:300px;
+                width:110px;
+                float:left;
+                padding:5px;
+            }
+            #welcome{
+                width:350px;
+                height:300px;
+                padding:10px;
+                float:left
+            }
+            </style>
+
+            <div id = "nav">
+                <a href = "/"> Home </a><br>
+                <a href = "/user/seeAll"> See All</a> <br>
+                Search by Kind <br>
+                Search by Ingredient <br>
+                About <br>
+
+            </div>
+<!-- sideBar -->
+
+<% include footer %>

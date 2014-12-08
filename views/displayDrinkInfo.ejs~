@@ -1,0 +1,13 @@
+<% include header %>
+<% include sideBar %>
+
+Submitted Data
+    <table id="login">
+        <tr><td>Email: </td>
+            <td><%= email %></td>
+        </tr>
+        <tr><td>Password: </td>
+            <td><%= password %></td>
+        </tr>
+    </table>
+<% include footer %>

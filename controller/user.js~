@@ -1,0 +1,142 @@
+var express = require('express');
+var router  = express.Router();
+var db   = require('../models/db');
+
+
+/* View all users in a <table> */
+router.get('/all', function (req, res) {
+    db.GetAll(function (err, result) {
+            if (err) throw err;
+            res.render('displayUserTable.ejs', {rs: result});
+        }
+    );
+});
+
+/* Create a User */
+
+// Create User Form
+router.get('/create', function(req, res){
+    res.render('simpleform.ejs', {action: '/user/create'});
+});
+
+// Save User to the Database
+router.post('/create', function (req, res) {
+    db.Insert( req.body, function (err, result) {
+            if (err) throw err;
+
+            if(result.UserID != 'undefined') {
+                var placeHolderValues = {
+                    email: req.body.email,
+                    password: req.body.password
+                };
+                res.render('displayUserInfo.ejs', placeHolderValues);
+            }
+            else {
+                res.send('User was not inserted.');
+            }
+        }
+    );
+});
+
+//Mine
+
+//Home page
+/*
+router.get('/', function (req, res) {
+    res.render('index.ejs',blah);
+    //res.send('Implement this as part of lab 19');
+});
+*/
+
+//See All
+router.get('/seeAll',function(req,res){
+    db.seeAll(function(err,result){
+	if(err) throw err;
+	res.render('seeAll.ejs',{rs:result});
+        }
+     );
+});
+
+//Search by Kind
+router.get('/searchKind',function(req,res){
+    res.render('searchKind.ejs',{action: 'user/searchKind'});
+});
+
+router.post('/searchKind',function(req,res){
+    console.log(req.body);
+    db.getByType(req.body, function(err, result){
+	if(err){
+	    throw err
+	}
+	else{
+	    res.render('seeAll.ejs',{rs:result});
+	}
+    }
+  ); 
+});
+    
+
+//Search by Ingredient
+router.get('/searchIng',function(req,res){
+    res.render('searchIng.ejs',{action: 'user/searchIng'});
+});
+
+router.post('/searchIng',function(req,res){
+    console.log(req.body);
+    db.getByIng(req.body, function(err, result){
+        if(err){
+            throw err
+        }
+        else{
+            res.render('seeAll.ejs',{rs:result});
+        }
+    }
+  );
+});
+
+
+//Add Drink
+router.get('/addDrink',function(req,res){
+    res.render('addDrink.ejs',{action :'user/addDrink'});
+});
+
+/*
+router.post('/addDrink',function(req,res){
+    console.log(req.body);
+    console.log(req.body.ingredient[0]);
+    res.send('drink added');
+});
+*/
+
+// Save Drink to the Database
+router.post('/addDrink', function (req, res) {
+    db.insertDrink( req.body, function (err, result) {
+            if (err){ //throw err;
+		 res.send('An error has occured');
+		}
+            else if(result.drinkName != 'undefined') {
+                var placeHolderValues = {
+                    drinkName: req.body.drinkName,
+                    glassType: req.body.glassType,
+		    ice: req.body.ice
+                };
+                //res.render('displayUserInfo.ejs', placeHolderValues);
+            }
+            else {
+                res.send('User was not inserted.');
+            }
+        }
+    );
+});
+
+
+//About
+router.get('/about',function(req,res){
+    res.render('about.ejs',{action: 'user/about'});
+});
+
+
+
+
+module.exports = router;
+

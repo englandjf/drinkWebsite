@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<% include header %>
+
+
+<% include sideBar %>
+
+
+	    <div id = "welcome">
+	    <h2>Welcome :D </h2>
+
+	    </div>	    
+
+	    </body>
+
+<% var hideBackLink = true; %>
+<% include footer %>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<% include header %>
+
+<form method="POST" action="/user/searchIng">
+    <table id="login">
+        <tr><td>Ingredient</td>
+            <td><input type="text" id="ingredient" name="ingredient" /></td>
+        </tr>
+    </table>
+    <input type="submit">
+</form>
+
+<% include footer %>

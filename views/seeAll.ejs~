@@ -1,0 +1,18 @@
+<!DOCTYPE Html>
+<% include header %>
+<% include sideBar %>
+
+
+Submitted Data
+    <table id="login">
+        <tr><td>Drink: </td>
+            <td><%= email %></td>
+        </tr>
+        <tr><td>Password: </td>
+            <td><%= password %></td>
+        </tr>
+    </table>
+
+
+
+<% include footer %>

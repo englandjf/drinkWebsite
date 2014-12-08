@@ -1,0 +1,22 @@
+<!DOCTYPE Html>
+<% include header %>
+<% include sideBar %>
+
+
+   <% if(rs.length > 0) { %>
+    <table>
+        <tr><th>Drink</th></tr>
+        <% for (var i=0; rs.length > i; i++) { %>
+            <tr>
+             <td> <%= rs[i].drinkName %></td>
+            </tr>
+        <% } %>
+    </table>
+    <% } else { %>
+         No drinks are entered into the database.
+    <% } %>
+
+
+
+
+<% include footer %>
