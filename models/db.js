@@ -123,3 +123,66 @@ exports.insertDrink = function(userInfo, callback) {
         }
     );
 }
+
+exports.insertMain = function(userInfo, callback) {
+    console.log(userInfo);
+    var query = 'INSERT INTO generalTypes  VALUES (\'' + userInfo.drinkName + '\', \'' + userInfo.mainType +  '\');';
+    console.log(query);
+    connection.query(query,
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return
+            }
+            callback(false, result);
+        }
+    );
+}
+
+exports.insertIng = function(userInfo, callback) {
+    console.log(userInfo);
+    for(var i = 0; i < userInfo.ingredient.length;i++)
+    {
+	if(userInfo.ingredient[i] != '')
+	{
+	var query = 'INSERT INTO specificTypes  VALUES (\'' + userInfo.drinkName + '\', \'' + userInfo.ingredient[i] + '\', \'' + '1' +   '\');';
+	console.log(query);
+	connection.query(query,
+	    function (err, result) {
+		if(err) {
+		 console.log(err);
+		 callback(true);
+		 //return
+		}
+	        callback(false, result);
+	     }
+	);
+      }
+    }
+}
+
+exports.insertSteps = function(userInfo, callback) {
+    console.log(userInfo);
+    for(var i = 0; i < userInfo.step.length;i++)
+    {
+        if(userInfo.step[i] != '')
+        {
+        var query = 'INSERT INTO Steps  VALUES (\'' + userInfo.drinkName + '\', \'' + (i+1) + '\', \'' + userInfo.step[i] +   '\');';
+        console.log(query);
+        connection.query(query,
+            function (err, result) {
+                if(err) {
+                 console.log(err);
+                 callback(true);
+                 //return
+                }
+                callback(false, result);
+             }
+        );
+      }
+    }
+}
+
+
+

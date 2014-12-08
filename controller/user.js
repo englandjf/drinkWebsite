@@ -110,23 +110,71 @@ router.post('/addDrink',function(req,res){
 
 // Save Drink to the Database
 router.post('/addDrink', function (req, res) {
+    //Drink table
+    var basicDrink;
     db.insertDrink( req.body, function (err, result) {
             if (err){ //throw err;
 		 res.send('An error has occured');
 		}
             else if(result.drinkName != 'undefined') {
-                var placeHolderValues = {
+                basicDrink = {
                     drinkName: req.body.drinkName,
                     glassType: req.body.glassType,
 		    ice: req.body.ice
                 };
-                res.render('displayDrinkInfo.ejs', placeHolderValues);
+                //res.render('displayDrinkInfo.ejs', placeHolderValues);
             }
             else {
-                res.send('User was not inserted.');
+                res.send('Drink was not inserted.');
             }
         }
     );
+    //Main Type table
+    var mT;
+    db.insertMain( req.body, function (err, result) {
+            if (err){ //throw err;
+                 res.send('An error has occured');
+                }
+            else if(result.mainType != 'undefined') {
+                    mT = req.body.mainType;
+                //res.render('displayDrinkInfo.ejs', placeHolderValues);
+            }
+            else {
+                res.send('Drink was not inserted.');
+            }
+        }
+    );
+    //Ingredients
+    db.insertIng( req.body, function (err, result) {
+            if (err){ //throw err;
+                 res.send('An error has occured');
+                }
+            else if(result.ingredient != 'undefined') {
+                   // mT = req.body.mainType;
+                //res.render('displayDrinkInfo.ejs', placeHolderValues);
+            }
+            else {
+                res.send('Drink was not inserted.');
+            }
+        }
+    );
+    //Steps
+    db.insertSteps( req.body, function (err, result) {
+            if (err){ //throw err;
+                 res.send('An error has occured');
+                }
+            else if(result.step != 'undefined') {
+                   // mT = req.body.mainType;
+                //res.render('displayDrinkInfo.ejs', placeHolderValues);
+            }
+            else {
+                res.send('Drink was not inserted.');
+            }
+        }
+    );
+
+
+    
 });
 
 
