@@ -184,5 +184,18 @@ exports.insertSteps = function(userInfo, callback) {
     }
 }
 
+exports.moreInfo = function(callback) {
+    connection.query('select * from Drink d join generalTypes gt on d.drinkName = gt.drinkName join specificTypes st on d.drinkName = st.drinkName join Steps s on d.drinkName = s.drinkName',
+        function (err, result) {
+            if(err) {
+                console.log(err);
+                callback(true);
+                return;
+            }
+            callback(false, result);
+        }
+    );
+}
+
 
 

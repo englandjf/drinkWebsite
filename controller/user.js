@@ -188,8 +188,8 @@ router.post('/addDrink', function (req, res) {
 	step: req.body.step
     };
 	
-    //if(stage1 && stage2 && stage3 && stage4)
-	res.render('displayDrinkInfo',variables);
+   // alert("Sucessfully Added Drink");
+    res.render('displayDrinkInfo',variables);
 
 
     
@@ -200,6 +200,21 @@ router.post('/addDrink', function (req, res) {
 router.get('/about',function(req,res){
     res.render('about.ejs',{action: 'user/about'});
 });
+
+//More info
+router.get('/moreInfo',function(req,res){
+    console.log(req.query);
+    db.moreInfo(function(err,result){
+	if(err) throw err;
+	res.render('displayDI2.ejs', {rs:result});
+    }
+    );
+    //res.send('yup');
+});
+
+
+
+
 
 
 

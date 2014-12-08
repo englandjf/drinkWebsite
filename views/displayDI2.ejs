@@ -1,31 +1,31 @@
 <% include header %>
 <% include sideBar %>
 
-Successfully Submitted Data
+Drink
     <table id="drink">
         <tr><td>Drink Name: </td>
-            <td><%= drinkName %></td>
+            <td><%= rs[0].drinkName %></td>
         </tr>
         <tr><td>Glass Type:  </td>
-            <td><%= glassType %></td>
+            <td><%= rs[0].glassType %></td>
         </tr>
 	<tr><td>Ice: </td>
-            <td><%= ice %></td>
+            <td><%= rs[0].ice %></td>
         </tr>	        
 	<tr><td>Main Alcohol: </td>
-            <td><%= mainType %></td>
+            <td><%= rs[0].mainType %></td>
         </tr>
 	<tr><td>Ingredients: </td>
-	<% for (var i=0; i < 6; i++) { %>
+	<% for (var i=0; i < 10; i++) { %>
             <tr>
-             <td> <%= ingredient[i] %></td>
+             <td> <%= rs[i].specName %></td>
             </tr>
         <% } %>
 	</tr>	        
 	<tr><td>Steps: </td>
-        <% for (var i=0; i < 6; i++) { %>
+        <% for (var i=0; i < 10; i++) { %>
             <tr>
-             <td> <%= step[i] %></td>
+             <td> <%= rs[i].instruction %></td>
             </tr>
         <% } %>
         </tr>

@@ -8,7 +8,7 @@
         <tr><th>Drink</th></tr>
         <% for (var i=0; rs.length > i; i++) { %>
             <tr>
-             <td> <%= rs[i].drinkName %></td>
+	      <td><a href="/user/moreInfo/?drinkName=<%= rs[i].drinkName %>"> <%= rs[i].drinkName %></a></td>
             </tr>
         <% } %>
     </table>
