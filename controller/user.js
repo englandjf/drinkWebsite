@@ -111,20 +111,21 @@ router.post('/addDrink',function(req,res){
 // Save Drink to the Database
 router.post('/addDrink', function (req, res) {
     //Drink table
-    var basicDrink;
+    var stage1 = false;
+    var stage2 = false;
+    var stage3 = false;
+    var stage4 = false;
     db.insertDrink( req.body, function (err, result) {
-            if (err){ //throw err;
+            if (err){ 
+		throw err;
 		 res.send('An error has occured');
-		}
+		stage1 = false;
+	    }
             else if(result.drinkName != 'undefined') {
-                basicDrink = {
-                    drinkName: req.body.drinkName,
-                    glassType: req.body.glassType,
-		    ice: req.body.ice
-                };
-                //res.render('displayDrinkInfo.ejs', placeHolderValues);
+               stage1 = true;
             }
             else {
+		stage1 = false;
                 res.send('Drink was not inserted.');
             }
         }
@@ -132,46 +133,63 @@ router.post('/addDrink', function (req, res) {
     //Main Type table
     var mT;
     db.insertMain( req.body, function (err, result) {
-            if (err){ //throw err;
+            if (err){ 
+		throw err;
                  res.send('An error has occured');
+		stage2 = false;
                 }
             else if(result.mainType != 'undefined') {
-                    mT = req.body.mainType;
-                //res.render('displayDrinkInfo.ejs', placeHolderValues);
+                stage2 = true;
             }
             else {
+		stage2 = false;
                 res.send('Drink was not inserted.');
             }
         }
     );
     //Ingredients
     db.insertIng( req.body, function (err, result) {
-            if (err){ //throw err;
+            if (err){ 
+		throw err;
                  res.send('An error has occured');
+		stage3 = false;
                 }
             else if(result.ingredient != 'undefined') {
-                   // mT = req.body.mainType;
-                //res.render('displayDrinkInfo.ejs', placeHolderValues);
+                stage3 = true;
             }
             else {
+		stage3 = false;
                 res.send('Drink was not inserted.');
             }
         }
     );
     //Steps
     db.insertSteps( req.body, function (err, result) {
-            if (err){ //throw err;
+            if (err){ 
+		throw err;
                  res.send('An error has occured');
+		stage4 = false;
                 }
             else if(result.step != 'undefined') {
-                   // mT = req.body.mainType;
-                //res.render('displayDrinkInfo.ejs', placeHolderValues);
+                stage4 = true;
             }
             else {
+		stage4 = false;
                 res.send('Drink was not inserted.');
             }
         }
     );
+    var variables = {
+	drinkName: req.body.drinkName,
+	glassType: req.body.glassType,
+	ice:  req.body.ice,
+	mainType: req.body.mainType,
+	ingredient: req.body.ingredient,
+	step: req.body.step
+    };
+	
+    //if(stage1 && stage2 && stage3 && stage4)
+	res.render('displayDrinkInfo',variables);
 
 
     

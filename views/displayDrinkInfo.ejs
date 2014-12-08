@@ -9,9 +9,27 @@ Submitted Data
         <tr><td>Glass Type:  </td>
             <td><%= glassType %></td>
         </tr>
-	<tr><td>Ice : </td>
+	<tr><td>Ice: </td>
             <td><%= ice %></td>
+        </tr>	        
+	<tr><td>Main Alcohol: </td>
+            <td><%= mainType %></td>
         </tr>
+	<tr><td>Ingredients: </td>
+	<% for (var i=0; i < 6; i++) { %>
+            <tr>
+             <td> <%= ingredient[i] %></td>
+            </tr>
+        <% } %>
+	</tr>	        
+	<tr><td>Steps: </td>
+        <% for (var i=0; i < 6; i++) { %>
+            <tr>
+             <td> <%= step[i] %></td>
+            </tr>
+        <% } %>
+        </tr>
+
 
     </table>
 <% include footer %>
